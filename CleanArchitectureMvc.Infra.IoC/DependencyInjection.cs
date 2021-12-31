@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanArchitectureMvc.Application.Interfaces;
+using CleanArchitectureMvc.Application.Mappings;
+using CleanArchitectureMvc.Application.Services;
 using CleanArchitectureMvc.Domain.Interfaces;
 using CleanArchitectureMvc.Infra.Data.Context;
 using CleanArchitectureMvc.Infra.Data.Repositories;
@@ -26,6 +29,10 @@ namespace CleanArchitectureMvc.Infra.IoC
 
             services.AddScoped<IProdutoRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
         }
