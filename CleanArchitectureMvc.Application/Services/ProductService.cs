@@ -11,10 +11,10 @@ namespace CleanArchitectureMvc.Application.Services
 {
     public class ProductService : IProductService
     {
-        private IProdutoRepository _produtoRepository;
+        private IProductRepository _produtoRepository;
         private readonly IMapper _mapper;
 
-        public ProductService(IProdutoRepository produtoRepository, IMapper mapper)
+        public ProductService(IProductRepository produtoRepository, IMapper mapper)
         {
             _produtoRepository = produtoRepository ??
                 throw new ArgumentException(nameof(produtoRepository));

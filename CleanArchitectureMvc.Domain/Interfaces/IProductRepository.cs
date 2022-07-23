@@ -4,7 +4,7 @@ using CleanArchitectureMvc.Domain.Entities;
 
 namespace CleanArchitectureMvc.Domain.Interfaces
 {
-    public interface IProdutoRepository
+    public interface IProductRepository
     {
         Task<IEnumerable<Product>> GetProductsAsync();
         Task<Product> GetByIdAsync(int? id);

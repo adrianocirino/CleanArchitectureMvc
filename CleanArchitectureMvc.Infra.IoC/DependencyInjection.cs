@@ -27,7 +27,7 @@ namespace CleanArchitectureMvc.Infra.IoC
                     , b => b.MigrationsAssembly((typeof(ApplicationDbContext).Assembly.FullName)));
             });
 
-            services.AddScoped<IProdutoRepository, ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             
             services.AddScoped<IProductService, ProductService>();
