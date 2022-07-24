@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CleanArchitectureMvc.Application.DTOs;
 using CleanArchitectureMvc.Application.Products.Commands;
+using CleanArchitectureMvc.Application.Products.Queries;
 
 namespace CleanArchitectureMvc.Application.Mappings
 {
@@ -8,7 +9,8 @@ namespace CleanArchitectureMvc.Application.Mappings
     {
         public DtoToCommandMappingProfile()
         {
-            CreateMap<ProductDTO, ProductCreateCommand>();
+            CreateMap<ProductDTO, ProductCreateCommand>().ReverseMap();
+            CreateMap<ProductDTO, ProductUpdateCommand>().ReverseMap();
         }
     }
 }
