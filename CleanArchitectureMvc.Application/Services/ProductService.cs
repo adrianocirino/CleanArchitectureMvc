@@ -30,7 +30,7 @@ namespace CleanArchitectureMvc.Application.Services
             if (productQuery == null)
                 throw new Exception("Entity could not be loaded");
 
-            var result = _mediator.Send(productQuery);
+            var result = await _mediator.Send(productQuery);
 
             return _mapper.Map<ProductDTO>(result);
         }
