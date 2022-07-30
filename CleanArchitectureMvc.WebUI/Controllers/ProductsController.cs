@@ -1,14 +1,15 @@
 ﻿using System.IO;
-using System.Runtime.CompilerServices;
 using CleanArchitectureMvc.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using CleanArchitectureMvc.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CleanArchitectureMvc.WebUI.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;

@@ -3,9 +3,11 @@ using CleanArchitectureMvc.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using CleanArchitectureMvc.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanArchitectureMvc.WebUI.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;

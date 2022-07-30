@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CleanArchitectureMvc.Domain.Account;
 using CleanArchitectureMvc.WebUI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitectureMvc.WebUI.Controllers
@@ -59,6 +60,12 @@ namespace CleanArchitectureMvc.WebUI.Controllers
             ModelState.AddModelError(string.Empty, "Invalid register attemp(password must be strong)");
             
             return View(model);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _authenticate.Logout();
+            return Redirect("/Account/Login");
         }
     }
 }
