@@ -1,5 +1,4 @@
-﻿using System;
-using CleanArchitectureMvc.Application.Interfaces;
+﻿using CleanArchitectureMvc.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using CleanArchitectureMvc.Application.DTOs;

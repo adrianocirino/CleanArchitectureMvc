@@ -30,7 +30,7 @@ namespace CleanArchitectureMvc.Infra.Data.Identity
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                var result = _userManager.CreateAsync(user, "@Teste123").Result;
+                var result = _userManager.CreateAsync(user, "Adriano@00").Result;
 
                 if (result.Succeeded)
                 {
@@ -49,7 +49,7 @@ namespace CleanArchitectureMvc.Infra.Data.Identity
                 user.LockoutEnabled = false;
                 user.SecurityStamp = Guid.NewGuid().ToString();
 
-                var result = _userManager.CreateAsync(user, "@Teste123").Result;
+                var result = _userManager.CreateAsync(user, "Adriano@00").Result;
 
                 if (result.Succeeded)
                 {
