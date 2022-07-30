@@ -65,6 +65,12 @@ namespace CleanArchitectureMvc.WebUI.Controllers
 
             var productDto = await _productService.GetById(id);
 
+            if (productDto == null) return NotFound();
+
+            var categories = await _categoryService.GetCategoriesAsync();
+
+            ViewBag.CategoryId = new SelectList(categories, "Id", "Name", productDto.CategoryId);
+
             return View(productDto);
         }
 
