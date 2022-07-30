@@ -15,9 +15,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanArchitectureMvc.Infra.IoC
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionAPI
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        public static IServiceCollection AddInfrastructureAPI(this IServiceCollection services,
             IConfiguration configuration)
         {
 
@@ -31,19 +31,13 @@ namespace CleanArchitectureMvc.Infra.IoC
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.AccessDeniedPath = "/Account/Login";
-            });
-
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            
+
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
-            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
             services.AddAutoMapper(typeof(DtoToCommandMappingProfile));
@@ -54,6 +48,5 @@ namespace CleanArchitectureMvc.Infra.IoC
 
             return services;
         }
-
     }
 }
