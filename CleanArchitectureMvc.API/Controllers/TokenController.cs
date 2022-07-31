@@ -24,6 +24,21 @@ namespace CleanArchitectureMvc.API.Controllers
             _configuration = configuration;
         }
 
+        [HttpPost("CreateUser")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public async Task<ActionResult> CreateUser(LoginModel loginModel)
+        {
+            var result = await _authenticate.RegisterUser(loginModel.Email, loginModel.Password);
+
+            if (result)
+            {
+                return Ok($"Usuário {loginModel.Email} Criado com Sucesso");
+            }
+
+            ModelState.AddModelError(String.Empty, "Invalid Data attemp.");
+            return BadRequest(ModelState);
+        }
+
         [HttpPost("LoginUser")]
         public async Task<ActionResult<UserToken>> Login(LoginModel loginModel)
         {
