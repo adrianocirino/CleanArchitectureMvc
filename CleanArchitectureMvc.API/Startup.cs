@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CleanArchitectureMvc.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,12 +23,11 @@ namespace CleanArchitectureMvc.API
         {
 
             services.AddInfrastructureAPI(Configuration);
+            services.AddInfrastructureJWT(Configuration);
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitectureMvc.API", Version = "v1" });
-            });
+
+            services.AddInfrastructureJWT();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,9 +41,11 @@ namespace CleanArchitectureMvc.API
             }
 
             app.UseHttpsRedirection();
+            app.UseStatusCodePages(); // vai tratar as respostas com codigo de resposta de 400 à 599.
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

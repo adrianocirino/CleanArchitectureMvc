@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CleanArchitectureMvc.API.Models;
 using CleanArchitectureMvc.Domain.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -26,6 +27,7 @@ namespace CleanArchitectureMvc.API.Controllers
 
         [HttpPost("CreateUser")]
         [ApiExplorerSettings(IgnoreApi = true)]
+        [Authorize]
         public async Task<ActionResult> CreateUser(LoginModel loginModel)
         {
             var result = await _authenticate.RegisterUser(loginModel.Email, loginModel.Password);
@@ -40,6 +42,7 @@ namespace CleanArchitectureMvc.API.Controllers
         }
 
         [HttpPost("LoginUser")]
+        [AllowAnonymous]
         public async Task<ActionResult<UserToken>> Login(LoginModel loginModel)
         {
             var result = await _authenticate.Authenticate(loginModel.Email, loginModel.Password);
